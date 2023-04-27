@@ -61,9 +61,8 @@ int connect_to_target() {
     // Set server address
     memset(&serv_addr, '0', sizeof(serv_addr));
     serv_addr.sin_family = AF_INET;
-    serv_addr.sin //TODO: fix this line please
-      
-        // Copy IP address to server address struct
+    serv_addr.sin_addr.s_addr = *(in_addr_t*)he->h_addr;
+    // Copy IP address to server address struct
     memcpy(&serv_addr.sin_addr, he->h_addr_list[0], he->h_length);
 
     // Set server port
@@ -79,6 +78,7 @@ int connect_to_target() {
 
     return client_fd;
 }
+
 
 void forward_request(int client_fd, int target_fd) {
 
