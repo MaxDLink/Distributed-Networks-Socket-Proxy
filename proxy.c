@@ -7,12 +7,16 @@
 #include <netdb.h>
 #include "proxy.h"
 
-void handle_connections(int server_fd) {
+void handle_connections(int server_fd, FILE *output_file) {
 
     int client_fd, valread;
     struct sockaddr_in address;
     int addrlen = sizeof(address);
     char buffer[1024] = {0};
+
+    printf("Listening on port 8080...\n"); //lets user know that the program is listening on port 8080
+    // Declare file pointer
+    output_file = fopen("output.txt", "w");
 
     while (1) {
         // Accept incoming connections
@@ -20,25 +24,30 @@ void handle_connections(int server_fd) {
             perror("accept failed");
             exit(EXIT_FAILURE);
         }
+        printf("Writing to output file...\n"); //lets user know that the program is writing to the output.txt file 
 
-        printf("Connection accepted...\n");
+        fprintf(output_file, "Connection accepted...\n");
 
         // Connect to target website
-        int target_fd = connect_to_target();
+        int target_fd = connect_to_target(output_file);
 
         // Forward HTTP request from client to target
-        forward_request(client_fd, target_fd);
+        forward_request(client_fd, target_fd, output_file);
 
         // Forward HTTP response from target to client
-        forward_response(client_fd, target_fd);
+        forward_response(client_fd, target_fd, output_file);
 
         // Close sockets
         close(client_fd);
         close(target_fd);
     }
+
+    // Close output file
+    fclose(output_file);
 }
 
-int connect_to_target() {
+
+int connect_to_target(FILE *output_file) {
 
     struct sockaddr_in serv_addr;
     char *target_website = "www.bom.gov.au";
@@ -74,39 +83,38 @@ int connect_to_target() {
         exit(EXIT_FAILURE);
     }
 
-    printf("Connected to target website...\n");
+    fprintf(output_file, "Connected to target website...\n");
 
     return client_fd;
 }
 
 
-void forward_request(int client_fd, int target_fd) {
+void forward_request(int client_fd, int target_fd, FILE *output_file) {
 
     char buffer[1024] = {0};
     int valread;
 
     // Read HTTP request from client
     valread = read(client_fd, buffer, 1024);
-    printf("--- HTTP request from client ---\n%s\n", buffer);
+    fprintf(output_file, "--- HTTP request from client ---\n%s\n", buffer);
 
     // Forward HTTP request to target
     send(target_fd, buffer, strlen(buffer), 0);
-    printf("--- HTTP request forwarded to target ---\n");
-
+    fprintf(output_file, "--- HTTP request forwarded to target ---\n%s\n", buffer);
 }
 
-void forward_response(int client_fd, int target_fd) {
+
+void forward_response(int client_fd, int target_fd, FILE *output_file) {
 
     char buffer[1024] = {0};
     int valread;
 
     // Read HTTP response from target
     valread = read(target_fd, buffer, 1024);
-    printf("--- HTTP response from target ---\n%s\n", buffer);
+    fprintf(output_file, "--- HTTP response from target ---\n%s\n", buffer);
 
     // Forward HTTP response to client
     send(client_fd, buffer, strlen(buffer), 0);
-    printf("--- HTTP response forwarded to client ---\n");
-
+    fprintf(output_file, "--- HTTP response forwarded to client ---\n");
 }
 
