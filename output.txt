@@ -1,0 +1,122 @@
+Connection accepted...
+Connected to target website...
+--- HTTP request from client ---
+GET / HTTP/1.1
+Host: localhost:8080
+Connection: keep-alive
+sec-ch-ua: "Chromium";v="112", "Google Chrome";v="112", "Not:A-Brand";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+
+
+--- HTTP request forwarded to target ---
+GET / HTTP/1.1
+Host: localhost:8080
+Connection: keep-alive
+sec-ch-ua: "Chromium";v="112", "Google Chrome";v="112", "Not:A-Brand";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+
+
+--- HTTP response from target ---
+HTTP/1.0 400 Bad Request
+Server: AkamaiGHost
+Mime-Version: 1.0
+Content-Type: text/html
+Content-Length: 208
+Expires: Fri, 28 Apr 2023 15:39:35 GMT
+Date: Fri, 28 Apr 2023 15:39:35 GMT
+Connection: close
+
+<HTML><HEAD>
+<TITLE>Invalid URL</TITLE>
+</HEAD><BODY>
+<H1>Invalid URL</H1>
+The requested URL "&#91;no&#32;URL&#93;", is invalid.<p>
+Reference&#32;&#35;9&#46;36c32f17&#46;1682696375&#46;9911bb2
+</BODY></HTML>
+
+--- HTTP response forwarded to client ---
+Connection accepted...
+Connected to target website...
+--- HTTP request from client ---
+GET /favicon.ico HTTP/1.1
+Host: localhost:8080
+Connection: keep-alive
+sec-ch-ua: "Chromium";v="112", "Google Chrome";v="112", "Not:A-Brand";v="99"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36
+sec-ch-ua-platform: "macOS"
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: image
+Referer: http://localhost:8080/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+
+
+--- HTTP request forwarded to target ---
+GET /favicon.ico HTTP/1.1
+Host: localhost:8080
+Connection: keep-alive
+sec-ch-ua: "Chromium";v="112", "Google Chrome";v="112", "Not:A-Brand";v="99"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36
+sec-ch-ua-platform: "macOS"
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: image
+Referer: http://localhost:8080/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+
+
+--- HTTP response from target ---
+HTTP/1.0 400 Bad Request
+Server: AkamaiGHost
+Mime-Version: 1.0
+Content-Type: text/html
+Content-Length: 254
+Expires: Fri, 28 Apr 2023 15:39:35 GMT
+Date: Fri, 28 Apr 2023 15:39:35 GMT
+Connection: close
+
+<HTML><HEAD>
+<TITLE>Invalid URL</TITLE>
+</HEAD><BODY>
+<H1>Invalid URL</H1>
+The requested URL "http&#58;&#47;&#47;&#37;5bNo&#37;20Host&#37;5d&#47;favicon&#46;ico", is invalid.<p>
+Reference&#32;&#35;9&#46;36c32f17&#46;1682696375&#46;9911c5d
+</BODY></HTML>
+
+--- HTTP response forwarded to client ---
+Connection accepted...
+Connected to target website...
+--- HTTP request from client ---
+GET / HTTP/1.1
+Host: localhost:8080
+Connection: keep-alive
+Cache-Control: max-age=0
+sec-ch-ua: "Chromium";v="112", "Google Chrome";v="112", "Not:A-Brand";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macO
